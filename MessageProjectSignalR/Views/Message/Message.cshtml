@@ -1,0 +1,56 @@
+﻿@model MessageProjectSignalR.Dtos.MessageDtos.CreateMessageDto
+@{
+    ViewData["Title"] = "Message";
+    Layout = null;
+}
+
+
+@await Component.InvokeAsync("MessageList", new { receiverId = ViewBag.ReceiverId })
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesaj Gönder</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Mesaj Gönder</h1>
+        <h2>Kullanıcı İsmi : @ViewBag.Name</h2>
+        <!-- Mesaj gönderme formu -->
+        <form method="post" action="/Message/Message">
+            <div class="form-group">
+                <label asp-for="Content">Mesaj İçeriği:</label>
+                <textarea asp-for="Content" class="form-control" rows="4"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ReceiverId">Alıcı ID:</label>
+                <input asp-for="ReceiverId" class="form-control" />
+                <span asp-validation-for="ReceiverId" class="text-danger"></span>
+            </div>
+            <button class="btn btn-primary">Gönder</button>
+        </form>
+
+        <!-- Başarı durumunu göstermek için -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <environment include="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    </environment>
+</body>
+</html>
+
+

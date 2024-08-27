@@ -1,0 +1,85 @@
+﻿@model MessageProjectSignalR.Dtos.UserDtos.LoginDto
+@{
+    ViewData["Title"] = "Login";
+    Layout = null; // Eğer varsayılan layout'u kullanmak istemiyorsanız bu satırı bırakın
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+            .btn:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Giriş Yap</h2>
+        <form  method="post">
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" type="text" />
+
+            <label asp-for="Password"></label>
+            <input asp-for="Password" type="password" />
+
+            <button type="submit" class="btn">Giriş Yap</button>
+        </form>
+    </div>
+</body>
+</html>
+
+

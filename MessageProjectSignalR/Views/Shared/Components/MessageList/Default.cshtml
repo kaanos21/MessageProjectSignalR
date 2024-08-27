@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.9/signalr.min.js"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <div id="messageList" class="list-group">
+            @foreach (var message in Model)
+            {
+                <a href="#" class="list-group-item list-group-item-action">
+                    <strong>Gönderici ID: @message.SenderId Alıcı ID: @message.ReceiverId</strong>: @message.Content <br />
+                    <small>@message.Time.ToString("g")</small>
+                </a>
+            }
+        </div>
+    </div>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Message List</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.9/signalr.min.js"></script>
+    </head>
+    <body>
+        <div class="container mt-4">
+            <div id="messageList" class="list-group"></div>
+        </div>
+
+        <script type="text/javascript">
+            const userId = 1; // Giriş yapan kullanıcının ID'si
+            const otherUserId = 2; // Mesajlaştığı diğer kullanıcının ID'si
+
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl("/signalRHub")
+                .build();
+
+            connection.start().then(() => {
+                setInterval(() => {
+                    connection.invoke("SignalGetMessagesAsync", userId, otherUserId).then(messages => {
+                        document.getElementById("messageList").innerHTML = messages.map(message =>
+                            `<a href="#" class="list-group-item list-group-item-action">
+                                        <strong>Gönderici ID: ${message.senderId} Alıcı ID: ${message.receiverId}</strong>: ${message.content} <br />
+                                        <small>${new Date(message.time).toLocaleString()}</small>
+                                    </a>`).join('');
+                    });
+                }, 2000); // 2 saniyede bir yenileme
+            }).catch(err => console.error(err.toString()));
+        </script>
+    </body>
+</html>
+
+</body>
+</html>
