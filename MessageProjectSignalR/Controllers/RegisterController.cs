@@ -24,6 +24,8 @@ namespace MessageProjectSignalR.Controllers
             {
                 var user = new AppUser()
                 {
+
+
                     Name = registerDto.Name,
                     Surname = registerDto.Surname,
                     UserName = registerDto.UserName,
