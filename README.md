@@ -36,4 +36,5 @@ LiveChatProject, ASP.NET Core 6.0 kullanılarak geliştirilmiş bir canlı sohbe
 - **Canlı Sohbet**: Kullanıcılar, gerçek zamanlı olarak mesaj gönderip alabilirler. ✅  
 - **SignalR Entegrasyonu**: Mesajların anında iletilmesini ve tüm kullanıcıların aynı anda güncel bilgiler almasını sağlar. ✅  
 - **Kullanıcı Girişi ve Hesap Yönetimi**: ASP.NET Core Identity ile kullanıcılar hesaplarına giriş yaparak mesaj gönderebilirler. ✅  
-- **SOLID Prensipleri**: Projede SOLID prensiplerine uygun olarak geliştirme yapılmıştır. ✅  
+- **SOLID Prensipleri**: Projede SOLID prensiplerine uygun olarak geliştirme yapılmıştır. ✅
+- 
